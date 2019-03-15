@@ -1,0 +1,36 @@
+		INSTALLATION AND IMPLEMENTATION OF ResPRE
+(Copyright 2018 by Zhang Lab, University of Michigan, All rights reserved)
+
+1. What is ResPRE?
+    ResPRE is a program for protein contact-map prediction by coupling PREcision matrix
+    with fully Residual neurl networks. 
+
+2. How to install the ResPRE?
+
+    1) Prerequisites
+        Python3 with numpy and scipy should be installed
+        pytorch-0.3.0 (https://pytorch.org/get-started/previous-versions/)
+        Anaconda is recommended to set up python environments
+    2) There is an executable file under 'bin' path, Maybe you also need set 
+        executable permission to the bin file.
+
+3. Bug report:
+    Please visit https://zhanglab.ccmb.med.umich.edu/bbs/?q=forum/2
+
+4. How to run the ResPRE?
+	python respre.py [msa_file] [outfile]
+		msa_file: Multiple Sequence Alignment file
+		outfile:  Output file, each line in this format: [position1 position2 score]
+		where position index start from 1 [NOT 0]
+
+5. Example
+	You can test by fowllowing commands:
+		' python respre.py test/T0759-D1.aln test/T0759-D1.out '
+	It will generate 2 files:
+		' T0759-D1.out.weight ': Weights for each sequence in msa, you can just ignore it.
+		' T0759-D1.out '       : Output file 
+
+
+Reference
+Yang Li, Jun Hu, Chengxin Zhang, Dong-Jun Yu, and Yang Zhang, ResPRE: high-accuracy protein 
+contact prediction by coupling precision matrix with deep residual neural networks.
