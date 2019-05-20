@@ -50,24 +50,3 @@ def computeapre(msafile,weightfile,savefile):
     pre=pre.astype('float32')
     np.save(savefile,pre)
         
-def compute_fasta(fasta,updir,savedir):
-    #updir='/oasis/projects/nsf/mia174/liyangum/deepPRE/makealn_test/'
-    #savedir='/oasis/scratch/comet/liyangum/temp_project/pre_compute/'
-    lines=open(fasta).readlines()
-    pdbids=[lines[2*i][1:].strip() for i in range(len(lines)//2)] 
-    #pool = Pool(processes=3)
-    for pdbid in pdbids:
-        msafile=updir+pdbid+'/'+pdbid+'.aln'
-        weightfile=updir+pdbid+'/'+pdbid+'.weight'
-        savefile=savedir+pdbid+'.pre'
-        computeapre(msafile,weightfile,savefile)
-        #pool.apply_async(computeapre,[msafile,weightfile,savefile])
-    #pool.close()
-    #pool.join()     
-if __name__ == "__main__":    
-    updir='/oasis/projects/nsf/mia174/liyangum/deepPRE/makealn_test/'
-    savedir= '/oasis/scratch/comet/liyangum/temp_project/pre_compute/pre/'   
-    #if not os.path.isdir(savedir):
-    #    os.makedirs(savedir)
-    inputfasta=sys.argv[1]
-    compute_fasta(inputfasta,updir,savedir)
